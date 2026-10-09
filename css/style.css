@@ -1,0 +1,297 @@
+/* ==========================================================
+   Le Pin — QR-меню
+   Mobile-first: базовые стили для телефона,
+   медиазапросы ниже добавляют правила для больших экранов.
+   ========================================================== */
+
+/* ---------- Переменные (цвета бренда Le Pin) ---------- */
+:root {
+  --green: #2d6a4f;        /* цвет логотипа */
+  --green-dark: #1f4d39;
+  --gold: #a8834f;         /* золотые акценты из бумажного меню */
+  --bg: #faf8f3;           /* тёплый «бумажный» фон */
+  --surface: #ffffff;
+  --text: #1d2a24;
+  --muted: #6f7772;
+  --line: #e7e1d4;
+
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Manrope", system-ui, -apple-system, sans-serif;
+
+  --nav-h: 108px;          /* высоту навигации JS уточнит сам */
+  --gutter: 16px;
+}
+
+/* Тёмная тема: в зале часто полумрак, белый экран слепит */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green: #7fbf9f;
+    --green-dark: #a6d6bd;
+    --gold: #c9a46e;
+    --bg: #121714;
+    --surface: #1a201c;
+    --text: #e9ece9;
+    --muted: #9aa39d;
+    --line: #2b332e;
+  }
+  .hero__logo { filter: brightness(1.7) saturate(0.6); }
+}
+
+/* ---------- База ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;           /* плавный скролл к якорям категорий */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+h2, h3, p { margin: 0; }
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Шапка ---------- */
+.hero {
+  position: relative;
+  padding: 56px var(--gutter) 24px;
+  text-align: center;
+}
+
+.hero__logo {
+  display: block;
+  width: min(240px, 70%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.hero__place {
+  margin-top: 12px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Переключатель языка */
+.lang {
+  position: absolute;
+  top: 14px;
+  right: var(--gutter);
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lang__btn {
+  padding: 6px 12px;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.lang__btn.is-active {
+  background: var(--green);
+  color: var(--bg);
+}
+
+/* ---------- Липкая навигация ---------- */
+.nav {
+  position: sticky;                  /* прилипает к верху при скролле */
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Вкладки Кухня / Бар — две равные половины через flex */
+.tabs {
+  display: flex;
+  padding: 0 var(--gutter);
+}
+
+.tabs__btn {
+  flex: 1;
+  padding: 14px 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.tabs__btn.is-active {
+  color: var(--green);
+  border-bottom-color: var(--gold);
+}
+
+/* Категории — горизонтальная лента со скроллом пальцем */
+.chips {
+  display: flex;
+  gap: 8px;
+  padding: 10px var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;             /* прячем полосу прокрутки (Firefox) */
+  -webkit-overflow-scrolling: touch;
+}
+
+.chips::-webkit-scrollbar { display: none; }  /* Chrome, Safari */
+
+.chip {
+  flex: 0 0 auto;                    /* чипы не сжимаются, лента скроллится */
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.chip.is-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+
+/* ---------- Меню ---------- */
+.menu {
+  padding: 8px var(--gutter) 40px;
+}
+
+.menu__loading {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.category {
+  padding-top: 28px;
+  scroll-margin-top: var(--nav-h);   /* якорь не прячется под липкой навигацией */
+}
+
+.category__head {
+  margin-bottom: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gold);
+}
+
+.category__title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--green);
+}
+
+.category__note {
+  margin-top: 4px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Позиция: grid — название слева, цена справа,
+   описание и объём уходят на вторую строку под название */
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.item:last-child { border-bottom: 0; }
+
+.item__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.item__price {
+  font-weight: 600;
+  white-space: nowrap;               /* «3 950 ₸» не разрывается */
+}
+
+.item__price--empty { color: var(--muted); font-weight: 400; }
+
+.item__desc {
+  grid-column: 1 / -1;
+  margin-top: 3px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+  color: var(--gold);
+}
+
+/* ---------- Подвал ---------- */
+.footer {
+  padding: 28px var(--gutter) 40px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer__brand {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+
+/* ---------- Планшет и больше ---------- */
+@media (min-width: 768px) {
+  body { font-size: 16px; }
+
+  /* ограничиваем ширину, чтобы строки не растягивались на весь экран */
+  .tabs,
+  .chips,
+  .menu,
+  .footer {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero { padding-top: 72px; }
+  .hero__logo { width: 300px; }
+  .category__title { font-size: 34px; }
+  .item__name { font-size: 17px; }
+}
