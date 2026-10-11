@@ -1,50 +1,58 @@
 /* ==========================================================
    Le Pin — QR-меню
    1. Загружаем данные из data/menu.json
-   2. Рисуем вкладки (Кухня / Бар), категории и позиции
-   3. Переключаем язык РУС / ҚАЗ без перезагрузки
-   4. Подсвечиваем категорию, которую гость сейчас листает
+   2. Рисуем обложку с 3 разделами (Кухня / Бар / Вина)
+   3. По клику на раздел показываем его категории и позиции
+   4. Переключаем язык РУС / ҚАЗ без перезагрузки
+   5. Подсвечиваем категорию, которую гость сейчас листает
    ========================================================== */
 
-// Состояние приложения: что сейчас выбрано
 const state = {
   data: null,
   lang: 'ru',
-  menuId: 'kitchen',
+  menuId: null,     // null = гость ещё на обложке
 };
 
-// Тексты интерфейса на двух языках
 const UI = {
-  ru: { signature: 'фирменный', noPrice: 'уточняйте', footer: 'Цены указаны в тенге', error: 'Не удалось загрузить меню' },
-  kk: { signature: 'фирмалық', noPrice: 'нақтылаңыз', footer: 'Бағалар теңгемен көрсетілген', error: 'Мәзірді жүктеу мүмкін болмады' },
+  ru: {
+    signature: 'фирменный', noPrice: 'уточняйте', footer: 'Цены указаны в тенге',
+    error: 'Не удалось загрузить меню',
+    tagline: 'Ресторан и бар при отеле «Дом у озера»',
+  },
+  kk: {
+    signature: 'фирмалық', noPrice: 'нақтылаңыз', footer: 'Бағалар теңгемен көрсетілген',
+    error: 'Мәзірді жүктеу мүмкін болмады',
+    tagline: '«Дом у озера» қонақүйіндегі мейрамхана және бар',
+  },
 };
 
-// Ссылки на элементы страницы
 const el = {
+  hero: document.querySelector('[data-hero]'),
+  heroTagline: document.querySelector('[data-hero-tagline]'),
+  heroSections: document.querySelector('[data-hero-sections]'),
+  place: document.querySelector('[data-place]'),
+  app: document.querySelector('[data-app]'),
+  back: document.querySelector('[data-back]'),
   tabs: document.querySelector('[data-tabs]'),
   chips: document.querySelector('[data-chips]'),
   menu: document.querySelector('[data-menu]'),
-  place: document.querySelector('[data-place]'),
   footer: document.querySelector('[data-footer-note]'),
-  nav: document.querySelector('.nav'),
+  topbar: document.querySelector('.topbar'),
   langButtons: document.querySelectorAll('[data-lang]'),
 };
 
 /* ---------- Помощники ---------- */
 
-// Берём текст на текущем языке; если казахского нет — показываем русский
 function t(obj) {
   if (!obj) return '';
   return obj[state.lang] || obj.ru || '';
 }
 
-// 3950 -> «3 950 ₸»
 function formatPrice(price) {
   if (price == null) return null;
   return price.toLocaleString('ru-RU') + ' ₸';
 }
 
-// Защита от HTML внутри данных (на случай кавычек и спецсимволов)
 function escapeHTML(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -57,7 +65,40 @@ function currentMenu() {
   return state.data.menus.find((m) => m.id === state.menuId);
 }
 
-/* ---------- Отрисовка ---------- */
+/* ---------- Обложка ---------- */
+
+function renderHero() {
+  el.heroTagline.textContent = UI[state.lang].tagline;
+  el.place.textContent = t(state.data.restaurant.place);
+
+  const otherLang = state.lang === 'ru' ? 'kk' : 'ru';
+  el.heroSections.innerHTML = state.data.menus
+    .map((m) => `
+      <button class="hero__section-btn" type="button" data-open-menu="${m.id}">
+        <span>
+          <span class="hero__section-name">${escapeHTML(t(m.title))}</span>
+          <span class="hero__section-kk">${escapeHTML(m.title[otherLang] || '')}</span>
+        </span>
+        <span class="hero__section-arrow">→</span>
+      </button>`)
+    .join('');
+}
+
+function showHero() {
+  state.menuId = null;
+  el.hero.hidden = false;
+  el.app.hidden = true;
+}
+
+function showMenu(menuId) {
+  state.menuId = menuId;
+  el.hero.hidden = true;
+  el.app.hidden = false;
+  renderMenuView();
+  window.scrollTo(0, 0);
+}
+
+/* ---------- Отрисовка меню ---------- */
 
 function renderTabs() {
   el.tabs.innerHTML = state.data.menus
@@ -79,8 +120,6 @@ function renderChips() {
 function renderItem(item) {
   const price = formatPrice(item.price);
   const badge = item.tag === 'signature' ? `<span class="badge">${UI[state.lang].signature}</span>` : '';
-
-  // Объём и описание — в одну строку: «50 мл · Шотландия, односолодовый»
   const details = [item.size, t(item.desc)].filter(Boolean).join(' · ');
 
   return `
@@ -91,7 +130,7 @@ function renderItem(item) {
     </article>`;
 }
 
-function renderMenu() {
+function renderMenuItems() {
   el.menu.innerHTML = currentMenu().categories
     .map((c) => `
       <section class="category" id="${c.id}">
@@ -104,22 +143,15 @@ function renderMenu() {
     .join('');
 }
 
-function renderStatic() {
-  el.place.textContent = t(state.data.restaurant.place);
+function renderMenuView() {
   el.footer.textContent = UI[state.lang].footer;
   document.documentElement.lang = state.lang;
-  el.langButtons.forEach((btn) => {
-    btn.classList.toggle('is-active', btn.dataset.lang === state.lang);
-  });
-}
+  el.langButtons.forEach((btn) => btn.classList.toggle('is-active', btn.dataset.lang === state.lang));
 
-// Полная перерисовка — вызываем при смене языка или вкладки
-function render() {
-  renderStatic();
   renderTabs();
   renderChips();
-  renderMenu();
-  updateNavHeight();
+  renderMenuItems();
+  updateNavOffset();
   watchCategories();
 }
 
@@ -132,8 +164,6 @@ function setActiveChip(id) {
   if (!chip) return;
   el.chips.querySelectorAll('.chip').forEach((c) => c.classList.remove('is-active'));
   chip.classList.add('is-active');
-
-  // Прокручиваем ленту так, чтобы активный чип был виден (сама страница не дёргается)
   el.chips.scrollTo({
     left: chip.offsetLeft - el.chips.clientWidth / 2 + chip.clientWidth / 2,
     behavior: 'smooth',
@@ -142,64 +172,59 @@ function setActiveChip(id) {
 
 function watchCategories() {
   if (observer) observer.disconnect();
-
-  // Категория «активна», когда её верх проходит линию сразу под навигацией
+  const offset = el.topbar.offsetHeight + 44; // topbar + chips row
   observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveChip(entry.target.id);
-      });
-    },
-    { rootMargin: `-${el.nav.offsetHeight + 1}px 0px -70% 0px` }
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) setActiveChip(e.target.id); }),
+    { rootMargin: `-${offset}px 0px -70% 0px` }
   );
-
   el.menu.querySelectorAll('.category').forEach((section) => observer.observe(section));
 }
 
-// Передаём в CSS реальную высоту навигации (для scroll-margin-top)
-function updateNavHeight() {
-  document.documentElement.style.setProperty('--nav-h', `${el.nav.offsetHeight}px`);
+function updateNavOffset() {
+  document.documentElement.style.setProperty('--nav-h', `${el.topbar.offsetHeight + 44}px`);
 }
 
 /* ---------- События ---------- */
 
-// Переключение языка
 el.langButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
     state.lang = btn.dataset.lang;
-    try { localStorage.setItem('lepin-lang', state.lang); } catch (e) { /* приватный режим */ }
-    render();
+    try { localStorage.setItem('lepin-lang', state.lang); } catch (e) {}
+    renderHero();
+    if (state.menuId) renderMenuView();
   });
 });
 
-// Переключение вкладок. Слушаем клик на контейнере (делегирование),
-// потому что сами кнопки пересоздаются при каждой отрисовке
+el.heroSections.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-open-menu]');
+  if (btn) showMenu(btn.dataset.openMenu);
+});
+
+el.back.addEventListener('click', showHero);
+
 el.tabs.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-menu-id]');
   if (!btn || btn.dataset.menuId === state.menuId) return;
-
   state.menuId = btn.dataset.menuId;
-  render();
-
-  // Возвращаем гостя к началу нового раздела
-  window.scrollTo({ top: el.nav.offsetTop, behavior: 'smooth' });
+  renderMenuView();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-window.addEventListener('resize', updateNavHeight);
+window.addEventListener('resize', updateNavOffset);
 
 /* ---------- Старт ---------- */
 
 async function init() {
-  try { state.lang = localStorage.getItem('lepin-lang') || 'ru'; } catch (e) { /* без сохранения */ }
+  try { state.lang = localStorage.getItem('lepin-lang') || 'ru'; } catch (e) {}
 
   try {
     const response = await fetch('data/menu.json');
     if (!response.ok) throw new Error(response.status);
     state.data = await response.json();
-    render();
+    renderHero();
   } catch (error) {
     console.error(error);
-    el.menu.innerHTML = `<p class="menu__loading">${UI[state.lang].error}</p>`;
+    el.heroSections.innerHTML = `<p style="color:#f4f1e9">${UI[state.lang].error}</p>`;
   }
 }
 
