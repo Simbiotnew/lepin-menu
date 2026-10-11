@@ -31,6 +31,9 @@
       <p class="hero__place" data-place></p>
 
       <div class="hero__sections" data-hero-sections></div>
+
+      <!-- Три плитки внизу: как добраться / отзыв / сайт отеля. Ссылки — в data/menu.json → restaurant.links -->
+      <div class="hero__extras" data-hero-extras></div>
     </div>
   </section>
 
@@ -55,6 +58,12 @@
       <p data-footer-note></p>
       <p class="footer__brand">LE PIN</p>
     </footer>
+  </div>
+
+  <!-- ВСПЛЫВАЮЩЕЕ ОКНО: «Обслуживание 10%» при открытии и увеличенное фото бутылки -->
+  <div class="modal" data-modal hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__card" role="dialog" aria-modal="true" data-modal-card></div>
   </div>
 
   <script src="js/menu.js"></script>
