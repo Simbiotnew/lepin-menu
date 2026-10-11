@@ -1613,7 +1613,7 @@
               "desc": {
                 "ru": "Вермут на основе вина с полынью и травами."
               },
-              "img": "img/menu/cinzano-bianco.jpg"
+              "img": "img/cinzano-bianco.jpg"
             },
             {
               "name": {
@@ -1638,7 +1638,7 @@
               "desc": {
                 "ru": "Итальянский горький аперитив с травяными и цитрусовыми нотами."
               },
-              "img": "img/menu/campari.jpg"
+              "img": "img/campari.jpg"
             },
             {
               "name": {
@@ -1649,7 +1649,7 @@
               "desc": {
                 "ru": "Итальянский аперитив с травяными и цитрусовыми нотами."
               },
-              "img": "img/menu/aperol.jpg"
+              "img": "img/aperol.jpg"
             },
             {
               "name": {
@@ -1660,7 +1660,7 @@
               "desc": {
                 "ru": "Итальянский аперитив с травяными и цитрусовыми нотами."
               },
-              "img": "img/menu/aperitivo.jpg"
+              "img": "img/aperitivo.jpg"
             },
             {
               "name": {
@@ -1687,7 +1687,7 @@
               "desc": {
                 "ru": "Коньяк из региона Cognac. Виноград Уньи Блан."
               },
-              "img": "img/menu/hennessy-vs.jpg"
+              "img": "img/hennessy-vs.jpg"
             },
             {
               "name": {
@@ -1698,7 +1698,7 @@
               "desc": {
                 "ru": "Коньяк из региона Cognac. Виноград Уньи Блан."
               },
-              "img": "img/menu/hennessy-vsop.jpg"
+              "img": "img/hennessy-vsop.jpg"
             },
             {
               "name": {
@@ -1709,7 +1709,7 @@
               "desc": {
                 "ru": "Коньяк из региона Cognac. Виноград Уньи Блан."
               },
-              "img": "img/menu/hennessy-xo.jpg"
+              "img": "img/hennessy-xo.jpg"
             },
             {
               "name": {
@@ -1720,7 +1720,7 @@
               "desc": {
                 "ru": "Коньяк из винограда Уньи Блан, субрегион Grande Champagne."
               },
-              "img": "img/menu/frapin-vsop-grand-cru.jpg"
+              "img": "img/frapin-vsop-grand-cru.jpg"
             },
             {
               "name": {
@@ -1731,7 +1731,7 @@
               "desc": {
                 "ru": "Коньяк из винограда Уньи Блан, субрегион Grande Champagne."
               },
-              "img": "img/menu/frapin-cigar-blend.jpg"
+              "img": "img/frapin-cigar-blend.jpg"
             },
             {
               "name": {
@@ -1742,7 +1742,7 @@
               "desc": {
                 "ru": "Коньяк из винограда Уньи Блан, субрегион Grande Champagne."
               },
-              "img": "img/menu/frapin-vip-xo.jpg"
+              "img": "img/frapin-vip-xo.jpg"
             },
             {
               "name": {
@@ -1753,7 +1753,7 @@
               "desc": {
                 "ru": "Испанский виноградный бренди, выдержанный по системе солера."
               },
-              "img": "img/menu/torres-10.jpg"
+              "img": "img/torres-10.jpg"
             }
           ]
         },
@@ -1773,7 +1773,7 @@
               },
               "size": "50 мл",
               "price": 4720,
-              "img": "img/menu/glenmorangie-the-original.jpg"
+              "img": "img/glenmorangie-the-original.jpg"
             },
             {
               "name": {
@@ -1784,7 +1784,7 @@
               },
               "size": "50 мл",
               "price": 7570,
-              "img": "img/menu/glenmorangie-the-lasanta-12-yo.jpg"
+              "img": "img/glenmorangie-the-lasanta-12-yo.jpg"
             },
             {
               "name": {
@@ -1795,7 +1795,7 @@
               },
               "size": "50 мл",
               "price": 7680,
-              "img": "img/menu/the-macallan-triple-cask-12.jpg"
+              "img": "img/the-macallan-triple-cask-12.jpg"
             },
             {
               "name": {
@@ -1806,7 +1806,7 @@
               },
               "size": "50 мл",
               "price": 5380,
-              "img": "img/menu/highland-park-12.jpg"
+              "img": "img/highland-park-12.jpg"
             },
             {
               "name": {
@@ -1817,7 +1817,7 @@
               },
               "size": "50 мл",
               "price": 4830,
-              "img": "img/menu/auchentoshan-12-yo.jpg"
+              "img": "img/auchentoshan-12-yo.jpg"
             },
             {
               "name": {
@@ -1828,7 +1828,7 @@
               },
               "size": "50 мл",
               "price": 6140,
-              "img": "img/menu/aberlour-12.jpg"
+              "img": "img/aberlour-12.jpg"
             },
             {
               "name": {
@@ -1839,7 +1839,7 @@
               },
               "size": "50 мл",
               "price": 8560,
-              "img": "img/menu/aberlour-14.jpg"
+              "img": "img/aberlour-14.jpg"
             },
             {
               "name": {
@@ -1850,7 +1850,7 @@
               },
               "size": "50 мл",
               "price": 3400,
-              "img": "img/menu/aerstone-sea-cask-10.jpg"
+              "img": "img/aerstone-sea-cask-10.jpg"
             },
             {
               "name": {
@@ -1861,7 +1861,7 @@
               },
               "size": "50 мл",
               "price": 5810,
-              "img": "img/menu/laphroaig-select.jpg"
+              "img": "img/laphroaig-select.jpg"
             },
             {
               "name": {
@@ -1872,7 +1872,7 @@
               },
               "size": "50 мл",
               "price": 5810,
-              "img": "img/menu/port-charlotte-10.jpg"
+              "img": "img/port-charlotte-10.jpg"
             },
             {
               "name": {
@@ -1883,7 +1883,7 @@
               },
               "size": "50 мл",
               "price": 5810,
-              "img": "img/menu/ardbeg-10.jpg"
+              "img": "img/ardbeg-10.jpg"
             },
             {
               "name": {
@@ -1894,7 +1894,7 @@
               },
               "size": "50 мл",
               "price": 5810,
-              "img": "img/menu/bruichladdich-scottish-barley.jpg"
+              "img": "img/bruichladdich-scottish-barley.jpg"
             },
             {
               "name": {
@@ -1905,7 +1905,7 @@
               },
               "size": "50 мл",
               "price": 2620,
-              "img": "img/menu/bushmills-original.jpg"
+              "img": "img/bushmills-original.jpg"
             },
             {
               "name": {
@@ -1916,7 +1916,7 @@
               },
               "size": "50 мл",
               "price": 4280,
-              "img": "img/menu/redbreast-15.jpg"
+              "img": "img/redbreast-15.jpg"
             },
             {
               "name": {
@@ -1927,7 +1927,7 @@
               },
               "size": "50 мл",
               "price": 2590,
-              "img": "img/menu/jameson-original.jpg"
+              "img": "img/jameson-original.jpg"
             },
             {
               "name": {
@@ -1938,7 +1938,7 @@
               },
               "size": "50 мл",
               "price": 3140,
-              "img": "img/menu/jameson-black-barrel.jpg"
+              "img": "img/jameson-black-barrel.jpg"
             },
             {
               "name": {
@@ -1949,7 +1949,7 @@
               },
               "size": "50 мл",
               "price": 4400,
-              "img": "img/menu/kinahan-s-ll.jpg"
+              "img": "img/kinahan-s-ll.jpg"
             },
             {
               "name": {
@@ -1960,7 +1960,7 @@
               },
               "size": "50 мл",
               "price": 2920,
-              "img": "img/menu/wild-turkey-101.jpg"
+              "img": "img/wild-turkey-101.jpg"
             },
             {
               "name": {
@@ -1971,7 +1971,7 @@
               },
               "size": "50 мл",
               "price": 2810,
-              "img": "img/menu/american-honey.jpg"
+              "img": "img/american-honey.jpg"
             },
             {
               "name": {
@@ -1982,7 +1982,7 @@
               },
               "size": "50 мл",
               "price": 2810,
-              "img": "img/menu/wild-turkey-rye.jpg"
+              "img": "img/wild-turkey-rye.jpg"
             },
             {
               "name": {
@@ -1993,7 +1993,7 @@
               },
               "size": "50 мл",
               "price": 2950,
-              "img": "img/menu/bulleit.jpg"
+              "img": "img/bulleit.jpg"
             },
             {
               "name": {
@@ -2004,7 +2004,7 @@
               },
               "size": "50 мл",
               "price": 3180,
-              "img": "img/menu/jack-daniel-s.jpg"
+              "img": "img/jack-daniel-s.jpg"
             }
           ]
         },
@@ -2024,7 +2024,7 @@
               "desc": {
                 "ru": "Из данковской ржи."
               },
-              "img": "img/menu/belvedere-pure.jpg"
+              "img": "img/belvedere-pure.jpg"
             },
             {
               "name": {
@@ -2035,7 +2035,7 @@
               "desc": {
                 "ru": "Водка из зернового спирта."
               },
-              "img": "img/menu/skyy.jpg"
+              "img": "img/skyy.jpg"
             },
             {
               "name": {
@@ -2046,7 +2046,7 @@
               "desc": {
                 "ru": "Водка из кукурузного спирта."
               },
-              "img": "img/menu/tito-s-handmade.jpg"
+              "img": "img/tito-s-handmade.jpg"
             },
             {
               "name": {
@@ -2057,7 +2057,7 @@
               "desc": {
                 "ru": "Из европейской пшеницы."
               },
-              "img": "img/menu/ketel-one.jpg"
+              "img": "img/ketel-one.jpg"
             },
             {
               "name": {
@@ -2068,7 +2068,7 @@
               "desc": {
                 "ru": "Из озимой пшеницы."
               },
-              "img": "img/menu/absolut.jpg"
+              "img": "img/absolut.jpg"
             },
             {
               "name": {
@@ -2079,7 +2079,7 @@
               "desc": {
                 "ru": "На основе спирта «Альфа»."
               },
-              "img": "img/menu/qazaq-eli-nomad-select.jpg"
+              "img": "img/qazaq-eli-nomad-select.jpg"
             }
           ]
         },
@@ -2099,7 +2099,7 @@
               "desc": {
                 "ru": "Ямайский купажированный ром из тростниковой мелассы."
               },
-              "img": "img/menu/appleton-estate-12.jpg"
+              "img": "img/appleton-estate-12.jpg"
             },
             {
               "name": {
@@ -2110,7 +2110,7 @@
               "desc": {
                 "ru": "Доминиканский ром из мелассы. Выдержка в бочках из-под бурбона и хереса."
               },
-              "img": "img/menu/brugal-1888.jpg"
+              "img": "img/brugal-1888.jpg"
             },
             {
               "name": {
@@ -2121,7 +2121,7 @@
               "desc": {
                 "ru": "Кубинский выдержанный ром из тростниковой мелассы."
               },
-              "img": "img/menu/havana-club-7.jpg"
+              "img": "img/havana-club-7.jpg"
             },
             {
               "name": {
@@ -2132,7 +2132,7 @@
               "desc": {
                 "ru": "Кубинский ром из тростниковой мелассы."
               },
-              "img": "img/menu/havana-club-3.jpg"
+              "img": "img/havana-club-3.jpg"
             }
           ]
         },
@@ -2152,7 +2152,7 @@
               "desc": {
                 "ru": "Джин с нотами дыни, лимона и юзу."
               },
-              "img": "img/menu/citadelle-jardin-d-t.jpg"
+              "img": "img/citadelle-jardin-d-t.jpg"
             },
             {
               "name": {
@@ -2163,7 +2163,7 @@
               "desc": {
                 "ru": "Чай Gunpowder, цитрусы и можжевельник."
               },
-              "img": "img/menu/drumshanbo-gunpowder-irish-gin.jpg"
+              "img": "img/drumshanbo-gunpowder-irish-gin.jpg"
             },
             {
               "name": {
@@ -2174,7 +2174,7 @@
               "desc": {
                 "ru": "Джин с 47 растительными ингредиентами."
               },
-              "img": "img/menu/monkey-47.jpg"
+              "img": "img/monkey-47.jpg"
             },
             {
               "name": {
@@ -2185,7 +2185,7 @@
               "desc": {
                 "ru": "Сухой джин."
               },
-              "img": "img/menu/bickens.jpg"
+              "img": "img/bickens.jpg"
             },
             {
               "name": {
@@ -2196,7 +2196,7 @@
               "desc": {
                 "ru": "Розовый джин с грейпфрутом."
               },
-              "img": "img/menu/bickens-pink.jpg"
+              "img": "img/bickens-pink.jpg"
             }
           ]
         },
@@ -2216,7 +2216,7 @@
               "desc": {
                 "ru": "100% голубая агава (Халиско)."
               },
-              "img": "img/menu/volcn-blanco.jpg"
+              "img": "img/volcn-blanco.jpg"
             },
             {
               "name": {
@@ -2227,7 +2227,7 @@
               "desc": {
                 "ru": "100% агава Эспадин, дымный стиль."
               },
-              "img": "img/menu/montelobos-espadn.jpg"
+              "img": "img/montelobos-espadn.jpg"
             },
             {
               "name": {
@@ -2238,7 +2238,7 @@
               "desc": {
                 "ru": "Яблочный бренди из региона Pays d'Auge, Нормандия."
               },
-              "img": "img/menu/fine-calvados-pays-d-auge-aoc.jpg"
+              "img": "img/fine-calvados-pays-d-auge-aoc.jpg"
             },
             {
               "name": {
@@ -2249,7 +2249,7 @@
               "desc": {
                 "ru": "Яблочный бренди из региона Pays d'Auge, Нормандия."
               },
-              "img": "img/menu/vsop-calvados-pays-d-auge-aoc.jpg"
+              "img": "img/vsop-calvados-pays-d-auge-aoc.jpg"
             }
           ]
         },
@@ -2269,7 +2269,7 @@
               "desc": {
                 "ru": "Ликёр из соррентийских лимонов. Вкус: лимон."
               },
-              "img": "img/menu/villa-massa.jpg"
+              "img": "img/villa-massa.jpg"
             },
             {
               "name": {
@@ -2287,7 +2287,7 @@
               "desc": {
                 "ru": "Итальянский амаро на альпийских травах, выдержанный в дубе."
               },
-              "img": "img/menu/braulio-amaro-alpino.jpg"
+              "img": "img/braulio-amaro-alpino.jpg"
             },
             {
               "name": {
@@ -2298,7 +2298,7 @@
               "desc": {
                 "ru": "Кофейный ликёр на ромовой основе с арабикой. Вкус: кофе."
               },
-              "img": "img/menu/kahla.jpg"
+              "img": "img/kahla.jpg"
             },
             {
               "name": {
@@ -2309,7 +2309,7 @@
               "desc": {
                 "ru": "Немецкий травяной ликёр на настое 56 трав и специй."
               },
-              "img": "img/menu/jgermeister.jpg"
+              "img": "img/jgermeister.jpg"
             },
             {
               "name": {
@@ -2320,7 +2320,7 @@
               "desc": {
                 "ru": "Амаро на основе биттера Angostura и специй."
               },
-              "img": "img/menu/amaro-di-angostura.jpg"
+              "img": "img/amaro-di-angostura.jpg"
             },
             {
               "name": {
@@ -2331,7 +2331,7 @@
               "desc": {
                 "ru": "Сливочный ликёр на основе ирландского виски. Вкус: сливки, какао."
               },
-              "img": "img/menu/baileys-original.jpg"
+              "img": "img/baileys-original.jpg"
             },
             {
               "name": {
@@ -2358,7 +2358,7 @@
               "desc": {
                 "ru": "Граппа из виноградных выжимок (Неббиоло / Санджовезе)."
               },
-              "img": "img/menu/grappa-di-brunello-di-barolo.jpg"
+              "img": "img/grappa-di-brunello-di-barolo.jpg"
             },
             {
               "name": {
@@ -2369,7 +2369,7 @@
               "desc": {
                 "ru": "Граппа из виноградных выжимок (Неббиоло / Санджовезе)."
               },
-              "img": "img/menu/grappa-di-brunello-di-barolo.jpg"
+              "img": "img/grappa-di-brunello-di-barolo.jpg"
             },
             {
               "name": {
@@ -2405,7 +2405,7 @@
               },
               "size": "150 мл",
               "price": 3700,
-              "img": "img/menu/le-grand-noir-moscato.jpg"
+              "img": "img/le-grand-noir-moscato.jpg"
             },
             {
               "name": {
@@ -2416,7 +2416,7 @@
               },
               "size": "150 мл",
               "price": 3700,
-              "img": "img/menu/le-grand-noir-ros.jpg"
+              "img": "img/le-grand-noir-ros.jpg"
             },
             {
               "name": {
@@ -2427,7 +2427,7 @@
               },
               "size": "150 мл",
               "price": 3700,
-              "img": "img/menu/le-grand-noir-red-blend.jpg"
+              "img": "img/le-grand-noir-red-blend.jpg"
             },
             {
               "name": {
@@ -2438,7 +2438,7 @@
               },
               "size": "150 мл",
               "price": 4050,
-              "img": "img/menu/il-pumo-malvasia-sauvignon.jpg"
+              "img": "img/il-pumo-malvasia-sauvignon.jpg"
             },
             {
               "name": {
@@ -2449,7 +2449,7 @@
               },
               "size": "150 мл",
               "price": 4050,
-              "img": "img/menu/il-pumo-primitivo.jpg"
+              "img": "img/il-pumo-primitivo.jpg"
             },
             {
               "name": {
@@ -2460,7 +2460,7 @@
               },
               "size": "150 мл",
               "price": 5500,
-              "img": "img/menu/belvento-vermentino-toscana.jpg"
+              "img": "img/belvento-vermentino-toscana.jpg"
             },
             {
               "name": {
@@ -2471,7 +2471,7 @@
               },
               "size": "150 мл",
               "price": 5500,
-              "img": "img/menu/belvento-sireno-toscana.jpg"
+              "img": "img/belvento-sireno-toscana.jpg"
             },
             {
               "name": {
@@ -2482,7 +2482,7 @@
               },
               "size": "200 мл",
               "price": 19000,
-              "img": "img/menu/mot-chandon-brut-imperial.jpg"
+              "img": "img/mot-chandon-brut-imperial.jpg"
             },
             {
               "name": {
@@ -2493,7 +2493,7 @@
               },
               "size": "200 мл",
               "price": 11000,
-              "img": "img/menu/cava-anna-blanc-de-blancs.jpg"
+              "img": "img/cava-anna-blanc-de-blancs.jpg"
             }
           ]
         },
@@ -2513,7 +2513,7 @@
               },
               "size": "750 мл",
               "price": 132000,
-              "img": "img/menu/ruinart-blanc-de-blancs.jpg"
+              "img": "img/ruinart-blanc-de-blancs.jpg"
             },
             {
               "name": {
@@ -2524,7 +2524,7 @@
               },
               "size": "750 мл",
               "price": 132000,
-              "img": "img/menu/ruinart-ros.jpg"
+              "img": "img/ruinart-ros.jpg"
             },
             {
               "name": {
@@ -2535,7 +2535,7 @@
               },
               "size": "750 мл",
               "price": 120000,
-              "img": "img/menu/veuve-clicquot-ros.jpg"
+              "img": "img/veuve-clicquot-ros.jpg"
             },
             {
               "name": {
@@ -2546,7 +2546,7 @@
               },
               "size": "750 мл",
               "price": 110000,
-              "img": "img/menu/veuve-clicquot-brut.jpg"
+              "img": "img/veuve-clicquot-brut.jpg"
             },
             {
               "name": {
@@ -2557,7 +2557,7 @@
               },
               "size": "750 мл",
               "price": 100000,
-              "img": "img/menu/mot-chandon-ros-imperial.jpg"
+              "img": "img/mot-chandon-ros-imperial.jpg"
             },
             {
               "name": {
@@ -2568,7 +2568,7 @@
               },
               "size": "750 мл",
               "price": 90000,
-              "img": "img/menu/mot-chandon-brut-imperial.jpg"
+              "img": "img/mot-chandon-brut-imperial.jpg"
             },
             {
               "name": {
@@ -2579,7 +2579,7 @@
               },
               "size": "750 мл",
               "price": 85000,
-              "img": "img/menu/laurent-perrier-brut.jpg"
+              "img": "img/laurent-perrier-brut.jpg"
             },
             {
               "name": {
@@ -2590,7 +2590,7 @@
               },
               "size": "750 мл",
               "price": 29000,
-              "img": "img/menu/excellence-brut.jpg"
+              "img": "img/excellence-brut.jpg"
             },
             {
               "name": {
@@ -2601,7 +2601,7 @@
               },
               "size": "750 мл",
               "price": 29000,
-              "img": "img/menu/excellence-brut-ros.jpg"
+              "img": "img/excellence-brut-ros.jpg"
             },
             {
               "name": {
@@ -2612,7 +2612,7 @@
               },
               "size": "750 мл",
               "price": 20000,
-              "img": "img/menu/cava-1551-brut-codornu.jpg"
+              "img": "img/cava-1551-brut-codornu.jpg"
             },
             {
               "name": {
@@ -2623,7 +2623,7 @@
               },
               "size": "750 мл",
               "price": 20000,
-              "img": "img/menu/cava-1551-ros-codornu.jpg"
+              "img": "img/cava-1551-ros-codornu.jpg"
             },
             {
               "name": {
@@ -2634,7 +2634,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/cava-anna-blanc-de-blancs.jpg"
+              "img": "img/cava-anna-blanc-de-blancs.jpg"
             },
             {
               "name": {
@@ -2645,7 +2645,7 @@
               },
               "size": "750 мл",
               "price": 47000,
-              "img": "img/menu/ruggeri-cartizze.jpg"
+              "img": "img/ruggeri-cartizze.jpg"
             },
             {
               "name": {
@@ -2656,7 +2656,7 @@
               },
               "size": "750 мл",
               "price": 31000,
-              "img": "img/menu/ruggeri-valdobbiadene-prosecco.jpg"
+              "img": "img/ruggeri-valdobbiadene-prosecco.jpg"
             },
             {
               "name": {
@@ -2667,7 +2667,7 @@
               },
               "size": "750 мл",
               "price": 31000,
-              "img": "img/menu/ruggeri-santo-stefano.jpg"
+              "img": "img/ruggeri-santo-stefano.jpg"
             },
             {
               "name": {
@@ -2678,7 +2678,7 @@
               },
               "size": "750 мл",
               "price": 22000,
-              "img": "img/menu/ruggeri-argeo-ros.jpg"
+              "img": "img/ruggeri-argeo-ros.jpg"
             },
             {
               "name": {
@@ -2689,7 +2689,7 @@
               },
               "size": "750 мл",
               "price": 38000,
-              "img": "img/menu/chandon-brut.jpg"
+              "img": "img/chandon-brut.jpg"
             },
             {
               "name": {
@@ -2700,7 +2700,7 @@
               },
               "size": "750 мл",
               "price": 38000,
-              "img": "img/menu/chandon-ros.jpg"
+              "img": "img/chandon-ros.jpg"
             }
           ]
         },
@@ -2720,7 +2720,7 @@
               },
               "size": "750 мл",
               "price": 36000,
-              "img": "img/menu/riesling-trocken.jpg"
+              "img": "img/riesling-trocken.jpg"
             },
             {
               "name": {
@@ -2731,7 +2731,7 @@
               },
               "size": "750 мл",
               "price": 30000,
-              "img": "img/menu/nuala-sauvignon-blanc.jpg"
+              "img": "img/nuala-sauvignon-blanc.jpg"
             },
             {
               "name": {
@@ -2742,7 +2742,7 @@
               },
               "size": "750 мл",
               "price": 62000,
-              "img": "img/menu/cloudy-bay-sauvignon-blanc.jpg"
+              "img": "img/cloudy-bay-sauvignon-blanc.jpg"
             },
             {
               "name": {
@@ -2753,7 +2753,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/silk-spice-white-blend.jpg"
+              "img": "img/silk-spice-white-blend.jpg"
             },
             {
               "name": {
@@ -2764,7 +2764,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/beringer-chardonnay.jpg"
+              "img": "img/beringer-chardonnay.jpg"
             },
             {
               "name": {
@@ -2775,7 +2775,7 @@
               },
               "size": "750 мл",
               "price": 25000,
-              "img": "img/menu/corte-giara-pinot-grigio.jpg"
+              "img": "img/corte-giara-pinot-grigio.jpg"
             },
             {
               "name": {
@@ -2786,7 +2786,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/natureo-muscat-0-0.jpg"
+              "img": "img/natureo-muscat-0-0.jpg"
             },
             {
               "name": {
@@ -2797,7 +2797,7 @@
               },
               "size": "750 мл",
               "price": 17000,
-              "img": "img/menu/codornu-albario.jpg"
+              "img": "img/codornu-albario.jpg"
             },
             {
               "name": {
@@ -2808,7 +2808,7 @@
               },
               "size": "750 мл",
               "price": 40000,
-              "img": "img/menu/20-barrels-chardonnay.jpg"
+              "img": "img/20-barrels-chardonnay.jpg"
             },
             {
               "name": {
@@ -2819,7 +2819,7 @@
               },
               "size": "750 мл",
               "price": 41000,
-              "img": "img/menu/saint-martin-chablis.jpg"
+              "img": "img/saint-martin-chablis.jpg"
             },
             {
               "name": {
@@ -2830,7 +2830,7 @@
               },
               "size": "750 мл",
               "price": 41000,
-              "img": "img/menu/bourgogne-aoc-chardonnay.jpg"
+              "img": "img/bourgogne-aoc-chardonnay.jpg"
             },
             {
               "name": {
@@ -2841,7 +2841,7 @@
               },
               "size": "750 мл",
               "price": 41000,
-              "img": "img/menu/chablis-domaine-laroche.jpg"
+              "img": "img/chablis-domaine-laroche.jpg"
             },
             {
               "name": {
@@ -2852,7 +2852,7 @@
               },
               "size": "750 мл",
               "price": 27000,
-              "img": "img/menu/grner-veltliner-federspiel.jpg"
+              "img": "img/grner-veltliner-federspiel.jpg"
             },
             {
               "name": {
@@ -2863,7 +2863,7 @@
               },
               "size": "750 мл",
               "price": 39000,
-              "img": "img/menu/wente-morning-fog-chardonnay.jpg"
+              "img": "img/wente-morning-fog-chardonnay.jpg"
             }
           ]
         },
@@ -2883,7 +2883,7 @@
               },
               "size": "750 мл",
               "price": 41000,
-              "img": "img/menu/whispering-angel.jpg"
+              "img": "img/whispering-angel.jpg"
             },
             {
               "name": {
@@ -2894,7 +2894,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/beringer-zinfandel-ros.jpg"
+              "img": "img/beringer-zinfandel-ros.jpg"
             }
           ]
         },
@@ -2914,7 +2914,7 @@
               },
               "size": "750 мл",
               "price": 37000,
-              "img": "img/menu/clos-de-los-siete.jpg"
+              "img": "img/clos-de-los-siete.jpg"
             },
             {
               "name": {
@@ -2925,7 +2925,7 @@
               },
               "size": "750 мл",
               "price": 53000,
-              "img": "img/menu/primitivo-di-manduria.jpg"
+              "img": "img/primitivo-di-manduria.jpg"
             },
             {
               "name": {
@@ -2936,7 +2936,7 @@
               },
               "size": "750 мл",
               "price": 58000,
-              "img": "img/menu/kanonkop-pinotage.jpg"
+              "img": "img/kanonkop-pinotage.jpg"
             },
             {
               "name": {
@@ -2947,7 +2947,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/beringer-zinfandel-red.jpg"
+              "img": "img/beringer-zinfandel-red.jpg"
             },
             {
               "name": {
@@ -2958,7 +2958,7 @@
               },
               "size": "750 мл",
               "price": 39000,
-              "img": "img/menu/valpolicella-classico.jpg"
+              "img": "img/valpolicella-classico.jpg"
             },
             {
               "name": {
@@ -2969,7 +2969,7 @@
               },
               "size": "750 мл",
               "price": 25000,
-              "img": "img/menu/errzuriz-estate-carmenre.jpg"
+              "img": "img/errzuriz-estate-carmenre.jpg"
             },
             {
               "name": {
@@ -2980,7 +2980,7 @@
               },
               "size": "750 мл",
               "price": 66000,
-              "img": "img/menu/cloudy-bay-pinot-noir.jpg"
+              "img": "img/cloudy-bay-pinot-noir.jpg"
             },
             {
               "name": {
@@ -2991,7 +2991,7 @@
               },
               "size": "750 мл",
               "price": 38000,
-              "img": "img/menu/chianti-classico-riserva-ducale-ruffino.jpg"
+              "img": "img/chianti-classico-riserva-ducale-ruffino.jpg"
             },
             {
               "name": {
@@ -3002,7 +3002,7 @@
               },
               "size": "750 мл",
               "price": 40000,
-              "img": "img/menu/louis-jadot-pinot-noir.jpg"
+              "img": "img/louis-jadot-pinot-noir.jpg"
             },
             {
               "name": {
@@ -3013,7 +3013,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/silk-spice-red-blend.jpg"
+              "img": "img/silk-spice-red-blend.jpg"
             },
             {
               "name": {
@@ -3024,7 +3024,7 @@
               },
               "size": "750 мл",
               "price": 36000,
-              "img": "img/menu/nuala-pinot-noir.jpg"
+              "img": "img/nuala-pinot-noir.jpg"
             },
             {
               "name": {
@@ -3035,7 +3035,7 @@
               },
               "size": "750 мл",
               "price": 19000,
-              "img": "img/menu/natureo-garnacha-syrah.jpg"
+              "img": "img/natureo-garnacha-syrah.jpg"
             }
           ]
         },
@@ -3055,7 +3055,7 @@
               },
               "size": "50 мл",
               "price": 1970,
-              "img": "img/menu/zuleta-pedro-ximnez.jpg"
+              "img": "img/zuleta-pedro-ximnez.jpg"
             },
             {
               "name": {
@@ -3066,7 +3066,7 @@
               },
               "size": "50 мл",
               "price": 2530,
-              "img": "img/menu/zuleta-amontillado.jpg"
+              "img": "img/zuleta-amontillado.jpg"
             },
             {
               "name": {
@@ -3077,7 +3077,7 @@
               },
               "size": "50 мл",
               "price": 2200,
-              "img": "img/menu/graham-s-fine-ruby.jpg"
+              "img": "img/graham-s-fine-ruby.jpg"
             },
             {
               "name": {
@@ -3088,7 +3088,7 @@
               },
               "size": "50 мл",
               "price": 3850,
-              "img": "img/menu/graham-s-10-yo-tawny.jpg"
+              "img": "img/graham-s-10-yo-tawny.jpg"
             }
           ]
         }
