@@ -11,6 +11,7 @@ const state = {
   data: null,
   lang: 'ru',
   menuId: null,     // null = гость ещё на обложке
+  photos: {},       // фото бутылок из data/photos.json (грузятся после меню)
 };
 
 const UI = {
@@ -175,15 +176,17 @@ function renderItem(item) {
   const details = [item.size, t(item.desc)].filter(Boolean).join(' · ');
   const name = escapeHTML(t(item.name));
 
-  // Фото есть не у всех позиций: тогда карточка шире (3 колонки вместо 2)
-  const photo = item.img
+  // Фото лежат внутри data/photos.json (ключ — item.img).
+  // Пока файл не загрузился или фото нет — карточка без картинки.
+  const src = item.img && state.photos[item.img];
+  const photo = src
     ? `<button class="item__photo" type="button" data-photo="${item.img}" data-photo-name="${name}">
-         <img src="${item.img}" alt="${name}" loading="lazy" width="56" height="72">
+         <img src="${src}" alt="${name}" width="56" height="72">
        </button>`
     : '';
 
   return `
-    <article class="item ${item.img ? 'item--photo' : ''}">
+    <article class="item ${src ? 'item--photo' : ''}">
       ${photo}
       <h3 class="item__name">${name}${badge}</h3>
       <p class="item__price ${price ? '' : 'item__price--empty'}">${price || UI[state.lang].noPrice}</p>
@@ -295,7 +298,7 @@ document.addEventListener('keydown', (event) => {
 
 el.menu.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-photo]');
-  if (btn) showPhoto(btn.dataset.photo, btn.dataset.photoName);
+  if (btn) showPhoto(state.photos[btn.dataset.photo], btn.dataset.photoName);
 });
 
 /* ---------- События ---------- */
@@ -333,6 +336,17 @@ window.addEventListener('resize', updateNavOffset);
 
 /* ---------- Старт ---------- */
 
+// Фото грузим вторым запросом, чтобы меню открывалось сразу,
+// а картинки «подтягивались» через секунду-две.
+async function loadPhotos() {
+  try {
+    const response = await fetch('data/photos.json');
+    if (!response.ok) return;
+    state.photos = await response.json();
+    if (state.menuId) { renderMenuItems(); watchCategories(); }
+  } catch (e) { /* без фото меню всё равно работает */ }
+}
+
 async function init() {
   try { state.lang = localStorage.getItem('lepin-lang') || 'ru'; } catch (e) {}
 
@@ -342,6 +356,7 @@ async function init() {
     state.data = await response.json();
     renderHero();
     maybeShowServiceNotice();
+    loadPhotos();
   } catch (error) {
     console.error(error);
     el.heroSections.innerHTML = `<p style="color:#f4f1e9">${UI[state.lang].error}</p>`;
