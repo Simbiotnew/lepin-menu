@@ -5,40 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Le Pin — меню</title>
   <meta name="description" content="Меню ресторана и бара Le Pin, отель «Дом у озера», озеро Щучье">
-  <meta name="theme-color" content="#faf8f3">
+  <meta name="theme-color" content="#1f4d39">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Шапка: логотип и переключатель языка -->
-  <header class="hero">
-    <div class="lang" role="group" aria-label="Язык / Тіл">
+  <!-- ЛЕНДИНГ: первое, что видит гость — большой фон, название, 3 кнопки-раздела.
+       Фон — силуэт сосны из логотипа на фирменном зелёном, пока нет настоящего фото.
+       Чтобы поставить фото, замени .hero-bg в css/style.css на background-image. -->
+  <section class="hero" data-hero>
+    <div class="hero-bg"></div>
+    <div class="hero__lang" role="group" aria-label="Язык / Тіл">
       <button class="lang__btn is-active" type="button" data-lang="ru">РУС</button>
       <button class="lang__btn" type="button" data-lang="kk">ҚАЗ</button>
     </div>
-    <img class="hero__logo" src="img/logo.png" alt="Le Pin Restaurant" width="320" height="199">
-    <p class="hero__place" data-place></p>
-  </header>
 
-  <!-- Липкая навигация: вкладки Кухня/Бар + категории -->
-  <nav class="nav" aria-label="Разделы меню">
-    <div class="tabs" role="tablist" data-tabs></div>
-    <div class="chips" data-chips></div>
-  </nav>
+    <div class="hero__content">
+      <img class="hero__logo" src="img/logo.png" alt="Le Pin Restaurant" width="200" height="124">
+      <h1 class="hero__title">LE PIN</h1>
+      <p class="hero__tagline" data-hero-tagline></p>
+      <p class="hero__place" data-place></p>
 
-  <!-- Сюда JS выводит категории и блюда -->
-  <main class="menu" data-menu>
-    <p class="menu__loading">Загружаем меню…</p>
-  </main>
+      <div class="hero__sections" data-hero-sections></div>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <p data-footer-note></p>
-    <p class="footer__brand">LE PIN</p>
-  </footer>
+  <!-- МЕНЮ: появляется после выбора раздела на обложке -->
+  <div class="app" data-app hidden>
+    <header class="topbar">
+      <button class="topbar__back" type="button" data-back aria-label="На обложку">←</button>
+      <div class="tabs" role="tablist" data-tabs></div>
+      <div class="topbar__lang" role="group" aria-label="Язык / Тіл">
+        <button class="lang__btn is-active" type="button" data-lang="ru">РУС</button>
+        <button class="lang__btn" type="button" data-lang="kk">ҚАЗ</button>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="Категории">
+      <div class="chips" data-chips></div>
+    </nav>
+
+    <main class="menu" data-menu></main>
+
+    <footer class="footer">
+      <p data-footer-note></p>
+      <p class="footer__brand">LE PIN</p>
+    </footer>
+  </div>
 
   <script src="js/menu.js"></script>
 </body>
