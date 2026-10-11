@@ -15,14 +15,30 @@ const state = {
 
 const UI = {
   ru: {
-    signature: 'фирменный', noPrice: 'уточняйте', footer: 'Цены указаны в тенге',
+    signature: 'фирменный', noPrice: 'уточняйте',
+    footer: 'Цены указаны в тенге. Обслуживание — 10%',
     error: 'Не удалось загрузить меню',
     tagline: 'Ресторан и бар при отеле «Дом у озера»',
+    serviceTitle: 'Обслуживание 10%',
+    serviceText: 'К сумме счёта добавляется 10% за обслуживание.',
+    ok: 'Понятно', close: 'Закрыть',
+    route: 'Как добраться', review: 'Оставить отзыв', site: 'Сайт отеля',
+    reviewText: 'Отсканируйте QR или нажмите кнопку — нам важно ваше мнение.',
+    siteText: 'Номера, услуги и бронирование отеля «Дом у озера».',
+    open: 'Открыть',
   },
   kk: {
-    signature: 'фирмалық', noPrice: 'нақтылаңыз', footer: 'Бағалар теңгемен көрсетілген',
+    signature: 'фирмалық', noPrice: 'нақтылаңыз',
+    footer: 'Бағалар теңгемен көрсетілген. Қызмет көрсету — 10%',
     error: 'Мәзірді жүктеу мүмкін болмады',
     tagline: '«Дом у озера» қонақүйіндегі мейрамхана және бар',
+    serviceTitle: 'Қызмет көрсету 10%',
+    serviceText: 'Шот сомасына қызмет көрсету үшін 10% қосылады.',
+    ok: 'Түсінікті', close: 'Жабу',
+    route: 'Қалай жетуге болады', review: 'Пікір қалдыру', site: 'Қонақүй сайты',
+    reviewText: 'QR-ды сканерлеңіз немесе батырманы басыңыз — сіздің пікіріңіз біз үшін маңызды.',
+    siteText: '«Дом у озера» қонақүйінің нөмірлері, қызметтері және брондау.',
+    open: 'Ашу',
   },
 };
 
@@ -30,6 +46,7 @@ const el = {
   hero: document.querySelector('[data-hero]'),
   heroTagline: document.querySelector('[data-hero-tagline]'),
   heroSections: document.querySelector('[data-hero-sections]'),
+  heroExtras: document.querySelector('[data-hero-extras]'),
   place: document.querySelector('[data-place]'),
   app: document.querySelector('[data-app]'),
   back: document.querySelector('[data-back]'),
@@ -39,6 +56,8 @@ const el = {
   footer: document.querySelector('[data-footer-note]'),
   topbar: document.querySelector('.topbar'),
   langButtons: document.querySelectorAll('[data-lang]'),
+  modal: document.querySelector('[data-modal]'),
+  modalCard: document.querySelector('[data-modal-card]'),
 };
 
 /* ---------- Помощники ---------- */
@@ -82,6 +101,39 @@ function renderHero() {
         <span class="hero__section-arrow">→</span>
       </button>`)
     .join('');
+
+  renderExtras();
+}
+
+/* Иконки — простые inline SVG, чтобы не тянуть библиотеку */
+const ICONS = {
+  route: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  review: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>',
+  site: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></svg>',
+};
+
+function renderExtras() {
+  const links = state.data.restaurant.links;
+  if (!links) { el.heroExtras.innerHTML = ''; return; }
+  const ui = UI[state.lang];
+  // «Как добраться» сразу открывает карту, остальные — окно с QR
+  el.heroExtras.innerHTML = `
+    <a class="extra" href="${links.map}" target="_blank" rel="noopener">${ICONS.route}<span>${ui.route}</span></a>
+    <button class="extra" type="button" data-extra="reviews">${ICONS.review}<span>${ui.review}</span></button>
+    <button class="extra" type="button" data-extra="site">${ICONS.site}<span>${ui.site}</span></button>`;
+}
+
+function showQrCard(kind) {
+  const ui = UI[state.lang];
+  const url = state.data.restaurant.links[kind];
+  const title = kind === 'reviews' ? ui.review : ui.site;
+  const text = kind === 'reviews' ? ui.reviewText : ui.siteText;
+  openModal(`
+    <h2 class="modal__title">${title}</h2>
+    <p class="modal__text">${text}</p>
+    <img class="modal__qr" src="img/qr-${kind}.png" alt="QR — ${title}" width="200" height="200">
+    <a class="modal__btn" href="${url}" target="_blank" rel="noopener">${ui.open}</a>
+    <button class="modal__btn modal__btn--ghost" type="button" data-modal-close>${ui.close}</button>`);
 }
 
 function showHero() {
@@ -121,10 +173,19 @@ function renderItem(item) {
   const price = formatPrice(item.price);
   const badge = item.tag === 'signature' ? `<span class="badge">${UI[state.lang].signature}</span>` : '';
   const details = [item.size, t(item.desc)].filter(Boolean).join(' · ');
+  const name = escapeHTML(t(item.name));
+
+  // Фото есть не у всех позиций: тогда карточка шире (3 колонки вместо 2)
+  const photo = item.img
+    ? `<button class="item__photo" type="button" data-photo="${item.img}" data-photo-name="${name}">
+         <img src="${item.img}" alt="${name}" loading="lazy" width="56" height="72">
+       </button>`
+    : '';
 
   return `
-    <article class="item">
-      <h3 class="item__name">${escapeHTML(t(item.name))}${badge}</h3>
+    <article class="item ${item.img ? 'item--photo' : ''}">
+      ${photo}
+      <h3 class="item__name">${name}${badge}</h3>
       <p class="item__price ${price ? '' : 'item__price--empty'}">${price || UI[state.lang].noPrice}</p>
       ${details ? `<p class="item__desc">${escapeHTML(details)}</p>` : ''}
     </article>`;
@@ -184,6 +245,59 @@ function updateNavOffset() {
   document.documentElement.style.setProperty('--nav-h', `${el.topbar.offsetHeight + 44}px`);
 }
 
+/* ---------- Всплывающее окно ---------- */
+
+function openModal(html, modifier) {
+  el.modalCard.className = `modal__card ${modifier || ''}`;
+  el.modalCard.innerHTML = html;
+  el.modal.hidden = false;
+  document.body.classList.add('is-locked');   // фон не скроллится под окном
+}
+
+function closeModal() {
+  el.modal.hidden = true;
+  el.modalCard.innerHTML = '';
+  document.body.classList.remove('is-locked');
+}
+
+function showServiceNotice() {
+  const ui = UI[state.lang];
+  openModal(`
+    <p class="modal__badge">10%</p>
+    <h2 class="modal__title">${ui.serviceTitle}</h2>
+    <p class="modal__text">${ui.serviceText}</p>
+    <button class="modal__btn" type="button" data-modal-close>${ui.ok}</button>`, 'modal__card--notice');
+}
+
+function showPhoto(src, name) {
+  openModal(`
+    <img class="modal__photo" src="${src}" alt="${name}">
+    <p class="modal__caption">${name}</p>
+    <button class="modal__btn modal__btn--ghost" type="button" data-modal-close>${UI[state.lang].close}</button>`, 'modal__card--photo');
+}
+
+// Окно про обслуживание показываем один раз за визит
+function maybeShowServiceNotice() {
+  let seen = false;
+  try { seen = sessionStorage.getItem('lepin-service') === '1'; } catch (e) {}
+  if (seen) return;
+  showServiceNotice();
+  try { sessionStorage.setItem('lepin-service', '1'); } catch (e) {}
+}
+
+el.modal.addEventListener('click', (event) => {
+  if (event.target.closest('[data-modal-close]')) closeModal();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !el.modal.hidden) closeModal();
+});
+
+el.menu.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-photo]');
+  if (btn) showPhoto(btn.dataset.photo, btn.dataset.photoName);
+});
+
 /* ---------- События ---------- */
 
 el.langButtons.forEach((btn) => {
@@ -201,6 +315,11 @@ el.heroSections.addEventListener('click', (event) => {
 });
 
 el.back.addEventListener('click', showHero);
+
+el.heroExtras.addEventListener('click', (event) => {
+  const btn = event.target.closest('[data-extra]');
+  if (btn) showQrCard(btn.dataset.extra);
+});
 
 el.tabs.addEventListener('click', (event) => {
   const btn = event.target.closest('[data-menu-id]');
@@ -222,6 +341,7 @@ async function init() {
     if (!response.ok) throw new Error(response.status);
     state.data = await response.json();
     renderHero();
+    maybeShowServiceNotice();
   } catch (error) {
     console.error(error);
     el.heroSections.innerHTML = `<p style="color:#f4f1e9">${UI[state.lang].error}</p>`;
