@@ -1,6 +1,7 @@
 /* ==========================================================
    Le Pin — QR-меню
-   Mobile-first: базовые стили для телефона,
+   Структура: обложка (hero, на весь экран) → выбор раздела →
+   меню с категориями. Mobile-first: базовые стили для телефона,
    медиазапросы ниже добавляют правила для больших экранов.
    ========================================================== */
 
@@ -18,11 +19,10 @@
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Manrope", system-ui, -apple-system, sans-serif;
 
-  --nav-h: 108px;          /* высоту навигации JS уточнит сам */
+  --nav-h: 108px;
   --gutter: 16px;
 }
 
-/* Тёмная тема: в зале часто полумрак, белый экран слепит */
 @media (prefers-color-scheme: dark) {
   :root {
     --green: #7fbf9f;
@@ -34,18 +34,12 @@
     --muted: #9aa39d;
     --line: #2b332e;
   }
-  .hero__logo { filter: brightness(1.7) saturate(0.6); }
 }
 
 /* ---------- База ---------- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;           /* плавный скролл к якорям категорий */
-  -webkit-text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -56,88 +50,199 @@ body {
   line-height: 1.45;
 }
 
-h2, h3, p { margin: 0; }
+h1, h2, h3, p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
 
-button {
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
+/* ==========================================================
+   ОБЛОЖКА (hero)
+   ========================================================== */
 
-/* ---------- Шапка ---------- */
 .hero {
   position: relative;
-  padding: 56px var(--gutter) 24px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #f4f1e9;
+}
+
+.hero[hidden] { display: none; }
+
+/* Фон. Пока нет настоящей фотографии заведения — фирменный градиент
+   с силуэтом сосны. Когда появится фото, замени этот блок на:
+   .hero-bg { background: url('../img/hero.jpg') center/cover; }
+   и добавь .hero-bg::after с тем же затемняющим градиентом ниже. */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 70% at 50% -10%, #3a7d5c 0%, var(--green-dark) 55%, #0f2e22 100%);
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/logo.png') center 38% / 480px no-repeat;
+  opacity: 0.08;
+  filter: brightness(10);   /* силуэт светлым пятном на тёмном фоне */
+  mix-blend-mode: overlay;
+}
+
+.hero__lang {
+  position: absolute;
+  top: 18px;
+  right: var(--gutter);
+  z-index: 2;
+  display: flex;
+  border: 1px solid rgba(244, 241, 233, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.hero__lang .lang__btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(244, 241, 233, 0.7);
+}
+
+.hero__lang .lang__btn.is-active {
+  background: rgba(244, 241, 233, 0.16);
+  color: #f4f1e9;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 100px var(--gutter) 56px;
   text-align: center;
 }
 
 .hero__logo {
-  display: block;
-  width: min(240px, 70%);
+  width: 96px;
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto 18px;
+  filter: brightness(0) invert(1);  /* логотип белым поверх тёмного фона */
+  opacity: 0.92;
+}
+
+.hero__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 44px;
+  letter-spacing: 0.1em;
+}
+
+.hero__tagline {
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgba(244, 241, 233, 0.82);
+  line-height: 1.5;
 }
 
 .hero__place {
-  margin-top: 12px;
-  color: var(--gold);
+  margin-top: 14px;
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: var(--gold);
 }
 
-/* Переключатель языка */
-.lang {
-  position: absolute;
-  top: 14px;
-  right: var(--gutter);
+/* Большие кнопки-разделы — главный элемент обложки */
+.hero__sections {
   display: flex;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
 }
 
-.lang__btn {
-  padding: 6px 12px;
-  border: 0;
-  background: transparent;
-  font-size: 12px;
+.hero__section-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border: 1px solid rgba(244, 241, 233, 0.3);
+  border-radius: 14px;
+  background: rgba(244, 241, 233, 0.08);
+  backdrop-filter: blur(6px);
+  text-align: left;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.hero__section-btn:active {
+  background: rgba(244, 241, 233, 0.18);
+}
+
+.hero__section-name {
+  font-family: var(--serif);
   font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--muted);
+  font-size: 21px;
+  color: #f4f1e9;
 }
 
-.lang__btn.is-active {
-  background: var(--green);
-  color: var(--bg);
+.hero__section-kk {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(244, 241, 233, 0.6);
 }
 
-/* ---------- Липкая навигация ---------- */
-.nav {
-  position: sticky;                  /* прилипает к верху при скролле */
+.hero__section-arrow {
+  font-size: 20px;
+  color: var(--gold);
+}
+
+/* ==========================================================
+   МЕНЮ (после выбора раздела)
+   ========================================================== */
+
+.app[hidden] { display: none; }
+
+.topbar {
+  position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
-/* Вкладки Кухня / Бар — две равные половины через flex */
-.tabs {
-  display: flex;
-  padding: 0 var(--gutter);
+.topbar__back {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  color: var(--muted);
 }
 
-.tabs__btn {
+.tabs {
   flex: 1;
-  padding: 14px 0 12px;
-  border: 0;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tabs__btn {
+  flex: 0 0 auto;
+  padding: 14px 16px 12px;
   border-bottom: 2px solid transparent;
-  background: none;
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .tabs__btn.is-active {
@@ -145,20 +250,48 @@ button {
   border-bottom-color: var(--gold);
 }
 
-/* Категории — горизонтальная лента со скроллом пальцем */
+.topbar__lang {
+  flex: 0 0 auto;
+  display: flex;
+  margin-right: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.topbar__lang .lang__btn {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.topbar__lang .lang__btn.is-active {
+  background: var(--green);
+  color: var(--bg);
+}
+
+.nav {
+  position: sticky;
+  top: 44px;
+  z-index: 9;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
 .chips {
   display: flex;
   gap: 8px;
   padding: 10px var(--gutter);
   overflow-x: auto;
-  scrollbar-width: none;             /* прячем полосу прокрутки (Firefox) */
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
-
-.chips::-webkit-scrollbar { display: none; }  /* Chrome, Safari */
+.chips::-webkit-scrollbar { display: none; }
 
 .chip {
-  flex: 0 0 auto;                    /* чипы не сжимаются, лента скроллится */
+  flex: 0 0 auto;
   padding: 7px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -176,20 +309,11 @@ button {
   color: var(--bg);
 }
 
-/* ---------- Меню ---------- */
-.menu {
-  padding: 8px var(--gutter) 40px;
-}
-
-.menu__loading {
-  padding: 40px 0;
-  text-align: center;
-  color: var(--muted);
-}
+.menu { padding: 8px var(--gutter) 40px; }
 
 .category {
   padding-top: 28px;
-  scroll-margin-top: var(--nav-h);   /* якорь не прячется под липкой навигацией */
+  scroll-margin-top: calc(44px + var(--nav-h));
 }
 
 .category__head {
@@ -214,8 +338,6 @@ button {
   color: var(--gold);
 }
 
-/* Позиция: grid — название слева, цена справа,
-   описание и объём уходят на вторую строку под название */
 .item {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -223,27 +345,12 @@ button {
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
-
 .item:last-child { border-bottom: 0; }
 
-.item__name {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.item__price {
-  font-weight: 600;
-  white-space: nowrap;               /* «3 950 ₸» не разрывается */
-}
-
+.item__name { font-size: 16px; font-weight: 600; }
+.item__price { font-weight: 600; white-space: nowrap; }
 .item__price--empty { color: var(--muted); font-weight: 400; }
-
-.item__desc {
-  grid-column: 1 / -1;
-  margin-top: 3px;
-  font-size: 13.5px;
-  color: var(--muted);
-}
+.item__desc { grid-column: 1 / -1; margin-top: 3px; font-size: 13.5px; color: var(--muted); }
 
 .badge {
   display: inline-block;
@@ -259,7 +366,6 @@ button {
   color: var(--gold);
 }
 
-/* ---------- Подвал ---------- */
 .footer {
   padding: 28px var(--gutter) 40px;
   border-top: 1px solid var(--line);
@@ -276,22 +382,14 @@ button {
   color: var(--gold);
 }
 
+.menu__loading { padding: 40px 0; text-align: center; color: var(--muted); }
+
 /* ---------- Планшет и больше ---------- */
 @media (min-width: 768px) {
   body { font-size: 16px; }
-
-  /* ограничиваем ширину, чтобы строки не растягивались на весь экран */
-  .tabs,
-  .chips,
-  .menu,
-  .footer {
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero { padding-top: 72px; }
-  .hero__logo { width: 300px; }
+  .tabs, .chips, .menu, .footer { max-width: 760px; margin-left: auto; margin-right: auto; }
   .category__title { font-size: 34px; }
   .item__name { font-size: 17px; }
+  .hero__content { max-width: 480px; }
+  .hero__title { font-size: 52px; }
 }
