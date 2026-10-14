@@ -3,42 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
   <title>Le Pin — меню</title>
   <meta name="description" content="Меню ресторана и бара Le Pin, отель «Дом у озера», озеро Щучье">
-  <meta name="theme-color" content="#faf8f3">
+  <meta name="theme-color" content="#f6f2e8">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Шапка: логотип и переключатель языка -->
-  <header class="hero">
-    <div class="lang" role="group" aria-label="Язык / Тіл">
+  <!-- ОБЛОЖКА: светлый фон с полупрозрачной сосной, название, 3 раздела и 4 плитки -->
+  <section class="hero" data-hero>
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="lang lang--hero" role="group" aria-label="Язык / Тіл / Language">
       <button class="lang__btn is-active" type="button" data-lang="ru">РУС</button>
       <button class="lang__btn" type="button" data-lang="kk">ҚАЗ</button>
+      <button class="lang__btn" type="button" data-lang="en">ENG</button>
     </div>
-    <img class="hero__logo" src="img/logo.png" alt="Le Pin Restaurant" width="320" height="199">
-    <p class="hero__place" data-place></p>
-  </header>
 
-  <!-- Липкая навигация: вкладки Кухня/Бар + категории -->
-  <nav class="nav" aria-label="Разделы меню">
-    <div class="tabs" role="tablist" data-tabs></div>
-    <div class="chips" data-chips></div>
-  </nav>
+    <div class="hero__content">
+      <h1 class="hero__title"><img class="hero__logo" src="img/logo.png" alt="Le Pin Restaurant" width="640" height="398"></h1>
+      <p class="hero__tagline" data-hero-tagline></p>
+      <p class="hero__place" data-place></p>
 
-  <!-- Сюда JS выводит категории и блюда -->
-  <main class="menu" data-menu>
-    <p class="menu__loading">Загружаем меню…</p>
-  </main>
+      <div class="hero__sections" data-hero-sections></div>
 
-  <footer class="footer">
-    <p data-footer-note></p>
-    <p class="footer__brand">LE PIN</p>
-  </footer>
+      <!-- Плитки: Instagram, WhatsApp, отзыв, сайт отеля. Ссылки — в data/menu.json → restaurant.links -->
+      <div class="hero__extras" data-hero-extras></div>
+    </div>
+  </section>
+
+  <!-- МЕНЮ: появляется после выбора раздела на обложке -->
+  <div class="app" data-app hidden>
+    <header class="topbar">
+      <button class="topbar__back" type="button" data-back aria-label="На обложку">←</button>
+      <div class="tabs" role="tablist" data-tabs></div>
+      <div class="lang lang--bar" role="group" aria-label="Язык / Тіл / Language">
+        <button class="lang__btn is-active" type="button" data-lang="ru">РУ</button>
+        <button class="lang__btn" type="button" data-lang="kk">ҚЗ</button>
+        <button class="lang__btn" type="button" data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="Категории">
+      <div class="chips" data-chips></div>
+    </nav>
+
+    <main class="menu" data-menu></main>
+
+    <footer class="footer">
+      <p data-footer-note></p>
+      <p class="footer__brand">LE PIN</p>
+    </footer>
+  </div>
+
+  <!-- ВСПЛЫВАЮЩЕЕ ОКНО: увеличенное фото бутылки или QR (отзыв, сайт) -->
+  <div class="modal" data-modal hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__card" role="dialog" aria-modal="true" data-modal-card></div>
+  </div>
 
   <script src="js/menu.js"></script>
 </body>
