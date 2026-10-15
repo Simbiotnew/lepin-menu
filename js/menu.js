@@ -219,6 +219,7 @@ function renderMenuItems() {
           <h2 class="category__title">${escapeHTML(t(c.title))}</h2>
           ${c.note ? `<p class="category__note">${escapeHTML(t(c.note))}</p>` : ''}
         </div>
+        ${c.intro ? `<p class="category__intro">${escapeHTML(t(c.intro))}</p>` : ''}
         ${c.items.map(renderItem).join('')}
       </section>`)
     .join('');
