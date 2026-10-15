@@ -345,6 +345,15 @@ body.is-locked { overflow: hidden; }
   color: var(--gold);
 }
 
+.category__intro {
+  margin: 10px 0 4px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--green-dark);
+}
+
 /* Позиция: название и цена в строку, ниже объём и описание.
    Grid: 1fr для текста, auto для цены — цена всегда справа. */
 .item {
